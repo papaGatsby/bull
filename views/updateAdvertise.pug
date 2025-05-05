@@ -1,0 +1,82 @@
+doctype html
+html 
+ head 
+  title updateApartment
+  link(rel='stylesheet' href='/register.css')
+ body 
+   include _header
+   .div.forms  
+    h1 Please make the necessary changes to the apartment 
+    form#frms(enctype='multipart/form-data')    
+     label choose two apartment pictures
+     input(type='file' name='file' multiple)
+     label choose one apartment video 
+     input(type='file' name='vid')
+     label Enter apartment location 
+     input(type='text' name='location' value=info.location)
+     label Price of the apartment (GHC)
+     input(type='text' name='price' value=info.price)
+     label Provide title for the appartment 
+     input(type='text' name='property_title' value=info.property_title)
+     label Provide descripton for the apartment 
+     textarea(cols='30' rows='5' name='description')=info.description
+     input(type='submit' value='click to submit' id='btn')
+
+
+   script.  
+    document.getElementById('frms').addEventListener('submit',(e)=>{
+
+       e.preventDefault();
+
+    let info = !{JSON.stringify(info)} 
+          
+       
+        /*
+                  to have access to the local variables in pug, the local variable
+     which is 'info' and is an object needs to be converted into a string and assigned into a variable so that
+      the client side object can then use it for any task like a fetch request. This is to say the local variables
+       in pug are only available when they are been rendered. They are only in the server side not in the client side which
+       is the browser so in order to have them in the client side we embed them into the html.
+             
+          */
+
+   
+
+    const a = info._id;
+  
+
+       let data = new FormData(e.target)
+        
+        fetch(`http://localhost:3000/landapartment/${a}`,{
+            method:'PATCH',
+            body: data
+        })
+        .then((val)=>{
+            if(val.ok){
+                alert(`changes implemented successfully`)
+                window.setTimeout(()=>location.assign('/update'),2000)
+            }
+            else{
+                val.json()
+                .then((ans)=>alert(ans.message))
+            }
+        })
+        .catch((err)=>{
+           alert('could not make the post fetch request')
+        })
+
+
+        })
+
+
+
+        document.getElementById('out').addEventListener('click',(e)=>{
+                e.preventDefault();
+          fetch('http://localhost:3000/logout')
+          .then(val=>{
+            if(val.ok){
+                 alert(`logged out successfully`);
+                 location.assign('/')
+            }
+          })
+      })

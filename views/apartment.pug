@@ -1,0 +1,107 @@
+doctype html
+html 
+ head 
+  meta(charset='UTF-8')
+  meta(name='viewport' content='width=device-width, initial-scale=1.0')
+  title Detail page 
+  link(rel='stylesheet' href='/apartmentdetail.css')
+ body
+   include _header
+   div.container 
+   div.media 
+    img(src=`/uploads/${info.pic1.filename}` alt='First Image')
+    img(src=`/uploads/${info.pic2.filename}` alt='Second Image')
+    video(controls)
+     source(src=`/uploads/${info.video.filename}` type='video/mp4')
+     Your browser does not support the video tag
+
+   div.details 
+    h1 Details 
+    h3= `Location: ${info.location}`
+    h3= `Price: GH₵${info.price}`
+    h3= `Property tile: ${info.property_title}`
+    h3= `Description: ${info.description}`
+    h3= `Landlord's Number: ${info.telephone}`
+    h3= `Email: ${info.email}`
+    if delta 
+     button(id='delete') DELETE APARTMENT
+    else if user 
+
+    else 
+     button.book BOOK APARTMENT  
+
+ 
+
+
+   script. 
+   
+    document.getElementById('board').addEventListener('click',(e)=>{
+    e.preventDefault();
+    fetch('http://localhost:3000/dash')
+     .then(val=>{
+      if(!val.ok){
+         val.json()
+         .then(ans=>{
+          if(ans.status==='unauthorize'){alert(ans.message); location.reload(true);}
+          else{
+            alert(ans.message); location.reload(true)
+          }
+         })
+         }else{
+        window.setTimeout(()=>location.assign('/dash'),1000)
+        }
+       })
+
+      })
+
+
+
+      document.getElementById('out').addEventListener('click',(e)=>{
+       e.preventDefault();
+       fetch(`http://localhost:3000/logout`)
+       .then(val=>{
+        if(val.ok){
+            alert(`Logged out successfully`);
+            window.setTimeout(()=>location.assign('/'),1000)
+        }
+         })
+
+    
+      })
+
+       
+            document.getElementById('delete').addEventListener('click',(e)=>{
+              e.preventDefault()
+
+              let ans =  window.confirm('are you sure you wish to delete this apartment')
+
+             
+                if(ans){
+              let info = !{JSON.stringify(info)};
+
+              const a = info._id;
+
+              
+              
+                    fetch(`http://localhost:3000/landapartment/${a}`,{
+                      method:'DELETE'
+                    })
+                    .then(value=>{
+                      if(value.ok){
+                        alert(`apartment deleted successfully`);
+                        window.setTimeout(()=>location.assign('/delete'),1000)
+                      }else{
+                         value.json()
+                         .then(ans=>{alert(ans.message)})
+                        
+                      }
+                    })
+
+                }else{
+                  location.assign('/delete')
+                }
+
+
+            })
+             
+     

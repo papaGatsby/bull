@@ -1,0 +1,189 @@
+*{
+    padding:0px;
+    margin:0px;
+            }
+    
+            body{
+                background-image:url(./media/room3.jpg);
+                background-position-x:50%;
+                background-position-y:50%;
+                color:khaki;
+                overflow:hidden;
+                font-size:1.5em;
+            }
+
+
+            .header{
+  
+                background-color:wheat;
+                color: gold;
+               
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                border-radius : 20px;
+                z-index: 1;
+            
+            }
+
+
+
+            ul{
+                display:flex;
+                justify-content: space-between;
+                align-items: center;
+              
+              }
+              
+              ul li{
+                list-style: none; 
+                padding:10px;
+                margin-left:40px;
+                font-size:20px;
+                
+              }
+              
+              ul li a{
+                text-decoration:none;
+                color: white;
+                font-family: Arial;
+                font-weight:bold;
+                transition: 2s ease-in-out;
+              }
+              
+              ul li a:hover{
+                color:black;
+              }
+
+
+    
+           .nav__search{
+           
+            color: gold;
+            padding: 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-radius : 20px;
+            z-index: 1;
+           }
+
+            
+              
+              #srch{
+                font-family: 'Times New Roman';
+                width: 200px;
+                height: 40px;
+                background: transparent; 
+                border:1px solid #ff7200;
+                font-size:16px; 
+              }
+              /* Button */
+            
+            
+            #btn{
+              
+              height:40px;
+              background:#ff7200;
+              border: 2px solid #ff7200;
+              color: #fff;
+              font-size: 15px;
+              border-radius:5px;
+              cursor:pointer;
+            }
+
+            #btn:hover{
+              background:floralwhite;
+              color:gray;
+            }
+            
+            #btn:focus{
+              outline: none;
+            }
+            
+            #srch:focus{
+              outline: none;
+            }
+
+
+            .forms #link{
+              font-family: Arial;
+              font-size:20px;
+              padding-top:20px;
+              text-align:center;
+            }
+
+            .forms #link a{
+              text-decoration:none;
+              color: turquoise;
+            }
+
+           
+
+
+
+
+             
+
+       
+    
+            .forms{
+             margin:auto;
+           width:400px;
+           height:120%;
+           background:linear-gradient(to top,rgba(0,0,0,0.8)50%,rgba(0,0,0,0.8)50%);
+           border-radius:10px;
+           padding:25px;
+          justify-items:center;
+            }
+
+            .forms h1{
+              width:220px;
+              font-family: sans-serif;
+              text-align: center;
+              color: sienna;
+              font-size:22px;
+              background-color:#fff;
+              border-radius: 10px;
+              margin:2px;
+              padding: 8px;
+            }
+
+            textarea{
+              display:block;
+            }
+
+
+            .forms input{
+              display: block;
+              font-size:15px;
+              letter-spacing:1px;
+               font-family: sans-serif;
+               margin-bottom: 15px;
+               
+            }
+
+
+            .forms input:focus{
+              outline:none;
+            }
+
+            ::placeholder{
+              
+              font-family:Arial;
+            }
+    
+
+
+
+
+             
+
+
+
+
+
+
+           
+
+          

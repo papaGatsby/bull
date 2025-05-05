@@ -1,0 +1,21 @@
+header.header 
+ form.nav__search
+  input(type='search' placeholder='search an apartment' id='srch')
+   
+  button#btn Click
+ .header__logo
+  img(src='' alt='apartment logo') 
+ nav.user
+  ul 
+    li 
+     a#board(href='/dash') Visit Dashboard 
+    li 
+     a#home(href='/') Visit Homepage 
+    li 
+     if user 
+      a#out(href='') Logout 
+     else 
+      a(href='/login') Login   
+ 
+   
+  

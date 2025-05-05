@@ -1,0 +1,90 @@
+doctype html 
+html 
+ head 
+  title 
+  link(rel='stylesheet' href='/register.css')
+body 
+ include _header
+ .div.forms 
+  h1 Registration
+  form#frm
+   label FirstName
+   input(type='text' name='firstName')
+   label LastName 
+   input(type='text' name='lastName')
+   label Password 
+   input(type='password' name='password')
+   label Confirm Password 
+   input(type='password' name='paswd2')
+   label Telephone Number
+   input(type='text' name='telephone')
+   label Email 
+   input(type='email' name='email')
+   input(type='submit' value='CLICK TO SUBMIT FORM' id='btn')
+  p#link Already have an account?
+   br
+   a(href='/login') Login
+
+
+
+
+ script(type='text/javascript').
+  let info = document.getElementById('frm');
+  let user = {};
+  info.addEventListener('submit',(e)=>{
+    e.preventDefault();
+    let data = new FormData(e.target);
+    data.forEach((v,i)=>{
+      user[i]=v
+    })
+
+    fetch('http://localhost:3000/signUp',{
+      method:'Post',
+      headers: {'Content-Type':'application/json'},
+      body:JSON.stringify(user)
+    })
+    .then((val)=>{
+      if(val.ok){
+        val.json()
+        .then(ans=>{alert('congratulations, you have signed up successfully'); 
+        location.assign('/dash')})
+      }
+      else{
+        val.json()
+        .then(err=>document.write(err.message))
+      }
+    })
+  })  
+
+
+  document.getElementById('board').addEventListener('click',(e)=>{
+    e.preventDefault();
+    fetch('http://localhost:3000/dash')
+     .then(val=>{
+      if(!val.ok){
+         val.json()
+         .then(ans=>{
+          if(ans.status==='unauthorize'){alert(ans.message); location.reload(true);}
+          else{
+            alert(ans.message); location.reload(true)
+          }
+         })
+      }else{
+        window.setTimeout(()=>location.assign('/dash'),1000)
+      }
+     })
+
+   })
+ 
+
+ 
+ 
+ 
+
+ 
+ 
+ 
+ 
+
+
+ 

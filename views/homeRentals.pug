@@ -1,0 +1,75 @@
+doctype html
+html
+  head
+    title MyHome
+    link(rel='stylesheet' href='style.css')
+    
+  body
+   #header
+    h1 Welcome to ApartmentGH
+    nav 
+     ul 
+      li
+       a(href='/') Home
+      li 
+       a(href='/tenantoverview') Browse Properties 
+      li 
+       a(href='/login') Login
+   .section.hero
+    .div.vid-container 
+     video(autoplay muted loop)
+      source(src='media/room1.mp4' type='video/mp4')
+    .div.welcome 
+     h1.fade-in Welcome To ApartmentGH 
+     p.fade-in Experience the best in comfort 
+     a(href='/tenantoverview')
+      button.cta Click to Explore Listings
+   
+   .section.testimonials
+    div.preference
+     div.user
+      h2 Are You a Landlord?
+      div.land
+       p Post your property today and connect with potential tenants.
+       button(onclick='landlord()') List Your Property
+     div.user
+      h2 Looking For a Place?
+      div.land 
+       p Find the perfect home that fits your budget and lifestyle
+       button(onclick='tenant()') Find a Home
+    div#testimonial-contain
+     h2 What our customers say
+     div.navigation 
+      button(onclick='prevTestimonial()') <
+      button(onclick='nextTestimonial()') >
+     div#testimonials-box 
+      p#testimonials-comment
+      h3#testimonials-header
+
+   .section.reason
+    h2 Why Choose ApartmentGH? 
+    div#decision 
+     .decision1 
+      h3 Easy to Use 
+      p seamless browsing and booking experience.
+     .decision1 
+      h3 Secure Payments 
+      p Reliable and secure payment processing.
+     .decision1 
+      h3 24/7 Support 
+      p Our team is here to help anytime.
+
+   script(src='/testimonial.js')
+
+   footer
+    p 2025 ApartmentGH | Your trusted real estate platform. 
+
+      
+   
+      
+    
+
+
+   
+        
+       

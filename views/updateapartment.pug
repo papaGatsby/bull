@@ -1,0 +1,32 @@
+extends base 
+
+block content
+ main.main
+  div.card-container
+   each apartment in homes
+    
+     div.card 
+      div.card_header 
+       div.card_picture 
+        div.card_picture-overlay &nbsp 
+        img.card__picture-img(src=`uploads/${apartment.pic1.filename}` alt='')
+       h3.heading-tertiary 
+        span= apartment.property_title 
+      
+       div.card__details 
+        h4.card__text= `Located at ${apartment.location}`
+        p.card__text= apartment.description 
+        div.card__footer 
+         p 
+          span.card__footer-value= `GH₵${apartment.price}`
+           |
+           |
+          span.card__footer-text
+          a.btn.btn--green.btn--small(href=`/update/${apartment._id}`) Make Changes  
+      
+    
+    
+
+
+     
+         
