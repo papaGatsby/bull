@@ -8,7 +8,7 @@ import path from 'path';
 
 
 export async function addApartment(req,res){
-const owner = await model.landlord.findById(req.info.id)
+const owner = await model.landlord.findById(req.info._id)
 
 
 try{
@@ -28,7 +28,7 @@ let data = await model.apartment.create({
     pic1,
     pic2,
     video,
-    landlord:req.info.id,
+    landlord:req.info._id,
     telephone: owner.telephone,
     email:owner.email
 })
@@ -140,16 +140,16 @@ if(price) updatedApartment.price = price;
 if(description) updatedApartment.description = description;
 if(property_title) updatedApartment.property_title = property_title;
 
-const check = await model.apartment.findOne({_id:req.params.id,landlord:req.info.id});
+const check = await model.apartment.findOne({_id:req.params.id,landlord:req.info._id});
 
 if(!check){
     return res.status(404).json({
         status:"invalid id",
-        message: "id of apartment does not exist in the database."
+        message: "id of apartment does not exist in the databases man."
     })
 }
 
-const info = await model.apartment.findOneAndUpdate({_id:req.params.id,landlord:req.info.id},updatedApartment,{new:true,runValidators:true})
+const info = await model.apartment.findOneAndUpdate({_id:req.params.id,landlord:req.info._id},updatedApartment,{new:true,runValidators:true})
 
 res.status(200).json({
     status:"success",

@@ -8,12 +8,14 @@ res.status(200).render('homeRentals')
 
 async function overview(req, res) {
 
+   
+
     try{
-            if (!req.info || !req.info.id) {
+            if (!req.info || !req.info._id) {
               return res.status(401).send('Unauthorized access.');
             }
 
-            let homes = await rent.apartment.find({ landlord: req.info.id });
+            let homes = await rent.apartment.find({ landlord: req.info._id });
          
             res.status(200).render('overview', {
                 title: 'Your Dashboard',
@@ -29,7 +31,7 @@ async function overview(req, res) {
   
 
 async function updateApartment(req,res){
-let homes = await rent.apartment.find({'landlord':req.info.id});
+let homes = await rent.apartment.find({'landlord':req.info._id});
 
 res.status(200).render('updateapartment',{
     title:'all update apartment',
@@ -81,9 +83,9 @@ async function deleteApartment(req,res){
 
 try{
      
-if(!req.info || !req.info.id){return res.status(401).send(`Unauthorized Access`)}
+if(!req.info || !req.info._id){return res.status(401).send(`Unauthorized Access`)}
 
-let homes  = await rent.apartment.find({landlord:req.info.id});
+let homes  = await rent.apartment.find({landlord:req.info._id});
 
 res.status(200).render('deleteApartment',{
     title: 'delete Apartment',

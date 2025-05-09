@@ -14,9 +14,10 @@ try{
 let info = await model.landlord.create(req.body);
 
 
+ //createToken({id:info.id},res);
 
- createToken({id:info.id},res);
 
+createToken({data:info},res);
 
 res.status(200).json({
   status:"success",
@@ -48,7 +49,7 @@ export async function logIn(req, res) {
 
    
     // ✅ Set cookie
-    createToken({ id: info._id },res);
+    createToken({data:info},res);
 
 res.status(200).json({
   status:"successfull",

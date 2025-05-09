@@ -45,7 +45,7 @@ if(err) return res.status(400).json({
     message:'please your token expired login again'
 });
 
-req.info = decoded
+req.info = decoded.data
 
 next();
     })
@@ -68,9 +68,19 @@ if(!token){
 
 const decoded = jwt.verify(token, process.env.ACCESS_TOKEN);
 
-req.info = decoded;
+//let home = Object.keys(decoded)
 
-res.locals.user = decoded
+//let jam = Object.keys(decoded['data'])
+
+//console.log(`yep now the values are ${decoded.data.firstName}`)
+
+req.info = decoded.data;
+
+
+
+res.locals.user = decoded.data
+
+
 
 check= false;
 
